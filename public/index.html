@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkyMagic</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1: #fcfcfb;
+    --page: #f9f9f7;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --muted: #898781;
+    --hairline: #e1e0d9;
+    --border: rgba(11,11,11,0.10);
+    --good: #0ca30c;
+    --good-light: #83cb63;
+    --warning: #fab219;
+    --critical: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1: #1a1a19;
+      --page: #0d0d0d;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --muted: #898781;
+      --hairline: #2c2c2a;
+      --border: rgba(255,255,255,0.10);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1: #1a1a19;
+    --page: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --muted: #898781;
+    --hairline: #2c2c2a;
+    --border: rgba(255,255,255,0.10);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--page); color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 15px; line-height: 1.45;
+  }
+  /* Left bar: overall color status for the next opportunity */
+  #statusbar { position: fixed; inset: 0 auto 0 0; width: 10px; background: var(--muted); }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 24px 64px 34px; }
+  header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  h1 { font-size: 22px; margin: 0; }
+  .sub { color: var(--text-secondary); font-size: 13px; }
+  /* Entry picker. Given full width so it wraps onto its own line under the
+     title rather than crowding the header on a phone. */
+  .entrypick { flex-basis: 100%; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 13px; }
+  .entrypick label { color: var(--text-secondary); }
+  .entrypick select {
+    font: inherit; color: var(--text-primary); background: var(--surface-1);
+    border: 1px solid var(--border); border-radius: 6px; padding: 3px 6px; max-width: 100%;
+  }
+  #entrynote { color: var(--warning); }
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; margin-top: 20px; }
+  /* Below large: the sunset-art panel becomes a faded backdrop instead of
+     eating the top half of the screen. */
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; }
+    .cols .hero { position: fixed; inset: 0; z-index: -1; opacity: 0.16; pointer-events: none; }
+    .cols .hero .panel { border: none; border-radius: 0; background: none; height: 100%; }
+    .cols .hero svg { width: 100%; height: 100%; display: block; }
+    .cols .hero .caption { display: none; }
+  }
+
+  .event { margin-bottom: 28px; }
+  .event h2 { font-size: 16px; margin: 0 0 10px; display: flex; align-items: baseline; gap: 10px; }
+  .event h2 .when { color: var(--text-secondary); font-weight: 400; font-size: 13px; }
+
+  .card {
+    display: grid; grid-template-columns: 84px minmax(0,1fr); gap: 14px;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px; margin-bottom: 10px;
+  }
+  .bigblock {
+    width: 84px; height: 84px; border-radius: 8px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; color: #fff; font-weight: 700;
+  }
+  .bigblock .letter { font-size: 28px; line-height: 1; }
+  .bigblock .num { font-size: 12px; font-weight: 600; opacity: 0.95; }
+  .site-name { font-weight: 600; }
+  .plan { color: var(--text-secondary); font-size: 13px; margin-top: 2px; }
+  .plan b { color: var(--text-primary); font-weight: 600; }
+  .nogo { color: var(--critical); font-size: 13px; margin-top: 4px; }
+
+  .miniblocks { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .mini {
+    min-width: 86px; border-radius: 6px; padding: 6px 8px; color: #fff;
+    font-size: 11px; line-height: 1.3; cursor: pointer;
+  }
+  .bigblock { cursor: pointer; }
+  .mini.active, .bigblock.active { box-shadow: 0 0 0 2.5px var(--text-primary); }
+  .subpanel { margin-top: 10px; }
+  .mini .mk { font-weight: 700; font-size: 12px; }
+  .mini .mv { opacity: 0.95; }
+  .c-green { background: var(--good); }
+  .c-lightgreen { background: var(--good-light); color: #143a00; }
+  .c-yellow { background: var(--warning); color: #3a2a00; }
+  .c-red { background: var(--critical); }
+
+  details { margin-top: 10px; }
+  summary { cursor: pointer; color: var(--text-secondary); font-size: 12.5px; }
+  .tree { margin-top: 8px; font-size: 12.5px; color: var(--text-secondary); }
+  .tree .tnode { padding: 1.5px 0; }
+  .tree b { color: var(--text-primary); font-weight: 600; }
+  .tree .tag { color: var(--muted); font-size: 11px; }
+  .tree .note { color: var(--muted); padding-left: 16px; }
+
+  .hero { position: sticky; top: 20px; align-self: start; }
+  .hero .panel { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .hero .caption { padding: 10px 14px; font-size: 13px; color: var(--text-secondary); border-top: 1px solid var(--hairline); }
+  .footer { margin-top: 28px; color: var(--muted); font-size: 12px; }
+  .footer a { color: inherit; }
+  .err { background: var(--surface-1); border: 1px solid var(--critical); border-radius: 10px; padding: 16px; }
+
+  /* Data panel: ground-truth collectors, read-only, nothing here feeds a
+     score yet — see docs/ground-truth-data-plan-2026-11-08.md. */
+  #databtn {
+    font: inherit; font-size: 13px; color: var(--text-secondary); background: var(--surface-1);
+    border: 1px solid var(--border); border-radius: 6px; padding: 3px 10px; cursor: pointer;
+  }
+  #databtn:hover { color: var(--text-primary); }
+  #datapanel { display: none; margin-top: 20px; }
+  #datapanel.open { display: grid; grid-template-columns: 220px minmax(0,1fr); gap: 0; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  @media (max-width: 700px) { #datapanel.open { grid-template-columns: 1fr; } }
+  .data-sources { border-right: 1px solid var(--hairline); padding: 10px 0; }
+  @media (max-width: 700px) { .data-sources { border-right: none; border-bottom: 1px solid var(--hairline); display: flex; overflow-x: auto; } }
+  .data-source {
+    display: block; width: 100%; text-align: left; font: inherit; font-size: 13.5px; color: var(--text-primary);
+    background: none; border: none; padding: 9px 16px; cursor: pointer; white-space: nowrap;
+  }
+  .data-source:hover { background: var(--page); }
+  .data-source.active { background: var(--page); font-weight: 600; box-shadow: inset 3px 0 0 var(--text-primary); }
+  .data-main { padding: 16px 20px; min-width: 0; }
+  .data-options { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .data-option {
+    font: inherit; font-size: 12.5px; color: var(--text-secondary); background: var(--page);
+    border: 1px solid var(--border); border-radius: 14px; padding: 3px 10px; cursor: pointer;
+  }
+  .data-option.active { background: var(--text-primary); color: var(--surface-1); border-color: var(--text-primary); }
+  .data-analysis { font-size: 13.5px; color: var(--text-primary); background: var(--page); border-radius: 8px; padding: 10px 12px; margin-bottom: 14px; line-height: 1.5; }
+  .data-analysis b { font-weight: 600; }
+  .data-raw { font-size: 12px; color: var(--text-secondary); }
+  .data-raw table { border-collapse: collapse; width: 100%; }
+  .data-raw th, .data-raw td { text-align: left; padding: 3px 8px 3px 0; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+  .data-raw th { color: var(--muted); font-weight: 500; }
+  .data-raw .mono { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 11px; white-space: pre-wrap; word-break: break-word; max-width: 420px; }
+</style>
+</head>
+<body>
+<div id="statusbar"></div>
+<div class="wrap">
+  <header>
+    <h1>SkyMagic</h1>
+    <span class="sub" id="meta">loading…</span>
+    <div class="entrypick">
+      <label for="entry">Where do you get on the Parkway?</label>
+      <select id="entry"><option value="">…</option></select>
+      <span class="sub" id="entrynote"></span>
+    </div>
+    <button id="databtn" type="button" aria-expanded="false">Data</button>
+  </header>
+  <div class="cols">
+    <main id="events">Loading forecast…</main>
+    <aside class="hero">
+      <div class="panel">
+        <!-- Sunset backdrop art -->
+        <svg viewBox="0 0 300 220" width="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Sunset over mountain ridges">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2d3561"/><stop offset="0.45" stop-color="#a4508b"/>
+              <stop offset="0.72" stop-color="#e8746a"/><stop offset="1" stop-color="#f9b16e"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="220" fill="url(#sky)"/>
+          <circle cx="150" cy="148" r="26" fill="#ffe29a"/>
+          <path d="M0 160 L60 118 L105 152 L160 108 L215 150 L260 122 L300 155 L300 220 L0 220 Z" fill="#3b2f4e" opacity="0.85"/>
+          <path d="M0 178 L50 148 L120 180 L190 140 L250 172 L300 150 L300 220 L0 220 Z" fill="#241d33"/>
+          <g stroke="#ffe29a" stroke-width="2" stroke-linecap="round" opacity="0.8">
+            <line x1="108" y1="132" x2="96" y2="124"/><line x1="150" y1="112" x2="150" y2="99"/>
+            <line x1="192" y1="132" x2="204" y2="124"/>
+          </g>
+        </svg>
+        <div class="caption">SkyMagic: clean air, high cirrus, gates open, coffee in the thermos.</div>
+      </div>
+    </aside>
+  </div>
+  <div id="datapanel">
+    <nav class="data-sources" id="datasources"></nav>
+    <div class="data-main" id="datamain">Loading…</div>
+  </div>
+  <div class="footer" id="footer"></div>
+</div>
+
+<script>
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const cssColor = c => c === 'green' ? 'var(--good)' : c === 'lightgreen' ? 'var(--good-light)' : c === 'red' ? 'var(--critical)' : 'var(--warning)';
+const icon = c => c === 'green' || c === 'lightgreen' ? '●' : c === 'red' ? '⚠' : '◒'; // status never carried by color alone
+
+// Every metric node has {name, score, grade, color} plus either a value (leaf)
+// or {merge, children}. Render the tree generically, one indented row per node.
+function treeRow(node, depth) {
+  const bits = [`${icon(node.color)} <b>${esc(node.name)}</b>`];
+  if (node.value) bits.push(esc(node.value));
+  bits.push(node.score == null ? 'no data' : `${node.score}/4`);
+  const tags = [node.merge ? `merge: ${node.merge}` : null, node.weight != null ? `w ${node.weight}` : null].filter(Boolean);
+  return `<div class="tnode" style="padding-left:${depth * 16}px">${bits.join(' — ')}${tags.length ? ` <span class="tag">${tags.join(' · ')}</span>` : ''}${node.note ? `<div class="note">${esc(node.note)}</div>` : ''}</div>`
+    + (node.children || []).map(c => treeRow(c, depth + 1)).join('');
+}
+
+function siteCard(s, ei, si, kind) {
+  const minis = s.metrics.map(m => `
+    <div class="mini c-${m.color}" role="button" tabindex="0" data-m="${esc(m.key)}"
+         title="${esc(m.name)}: ${m.score ?? '?'} / 4 — click for components">
+      <div class="mk">${icon(m.color)} ${esc(m.name)}</div>
+      <div class="mv">${m.score == null ? 'no data' : m.grade + ' · ' + m.score + '/4'}</div>
+    </div>`).join('');
+  const past = s.plan.departMs < Date.now() ? ' <span style="color:var(--critical)">⏱ departure already passed</span>' : '';
+  const legs = `${s.plan.travelMin} min drive + ${s.plan.hikeMin} min hike + ${s.plan.setupMin} min setup${s.plan.bufferMin ? ` + ${s.plan.bufferMin} min buffer` : ''}`;
+  const plan = (s.plan.alarm
+    ? `Wake <b>${esc(s.plan.alarm)}</b> → leave <b>${esc(s.plan.depart)}</b> (${legs})`
+    : `Leave by <b>${esc(s.plan.depart)}</b> (${legs})`) + past;
+  return `
+  <div class="card" data-ev="${ei}" data-site="${si}">
+    <div class="bigblock c-${s.color}" role="button" tabindex="0" data-m="all"
+         title="Overall ${s.grade} (${s.overall}/4) — click for all components">
+      <div class="letter">${esc(s.grade)}</div><div class="num">${s.overall}/4</div>
+    </div>
+    <div>
+      <div class="site-name">${icon(s.color)} ${esc(s.name)} <span class="sub">· photo time <b>${esc(s.plan.photo)}</b> · ${esc(kind)} ${esc(s.eventTime)}</span></div>
+      <div class="plan">${plan}${s.plan.hikeNote ? ` — <span>${esc(s.plan.hikeNote)}</span>` : ''}</div>
+      ${s.noGo.length ? `<div class="nogo">⚠ No-go: ${esc(s.noGo.join('; '))}</div>` : ''}
+      <div class="miniblocks">${minis}</div>
+      <div class="tree subpanel" hidden></div>
+    </div>
+  </div>`;
+}
+
+// Click a metric block to see the sub-metrics that make it up (big block = all).
+// Delegated on #events so it survives re-renders; Enter/Space work too.
+let DATA = null;
+function togglePanel(target) {
+  const card = target.closest('.card');
+  const panel = card.querySelector('.subpanel');
+  const s = DATA.events[+card.dataset.ev].sites[+card.dataset.site];
+  const key = target.dataset.m;
+  card.querySelectorAll('.active').forEach(x => x.classList.remove('active'));
+  if (panel.dataset.open === key) { panel.hidden = true; panel.dataset.open = ''; return; }
+  target.classList.add('active');
+  panel.dataset.open = key;
+  panel.innerHTML = key === 'all'
+    ? s.metrics.map(m => treeRow(m, 0)).join('')
+    : treeRow(s.metrics.find(m => m.key === key), 0);
+  panel.hidden = false;
+}
+document.getElementById('events').addEventListener('click', e => {
+  const t = e.target.closest('[data-m]');
+  if (t) togglePanel(t);
+});
+document.getElementById('events').addEventListener('keydown', e => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const t = e.target.closest('[data-m]');
+  if (t) { e.preventDefault(); togglePanel(t); }
+});
+
+// The entry point is not a preference — it decides which road closures sit
+// between the visitor and each spot, so an assumed gate can produce a
+// confident F for a site that is actually reachable. Say when it was assumed.
+const storedEntry = () => { try { return localStorage.getItem('skymagic.entry') || ''; } catch { return ''; } };
+
+function renderEntry(data) {
+  const sel = document.getElementById('entry');
+  // Never let the entry picker take the forecast down with it. A server older
+  // than this page sends no accessPoints, and on 2026-09-07 that blanked the
+  // whole dashboard: the throw escaped into load()'s catch before any event was
+  // rendered. The forecast is the product; this control is not.
+  if (!data.accessPoints || !data.entry) {
+    document.querySelector('.entrypick').style.display = 'none';
+    return;
+  }
+  if (!sel.dataset.filled) {
+    sel.innerHTML = '<option value="">Choose your entrance…</option>'
+      + data.accessPoints.map(a => `<option value="${esc(a.id)}">${esc(a.name)} — MP ${a.milepost}</option>`).join('');
+    sel.dataset.filled = '1';
+    sel.addEventListener('change', () => {
+      try { localStorage.setItem('skymagic.entry', sel.value); } catch {}
+      load();
+    });
+  }
+  sel.value = data.entry.chosen ? data.entry.id : (storedEntry() || '');
+  document.getElementById('entrynote').textContent = data.entry.chosen
+    ? ''
+    : `assuming ${data.entry.name} — closures are judged from there`;
+}
+
+async function load() {
+  const main = document.getElementById('events');
+  try {
+    // ?entry= wins (shareable link); otherwise the visitor's remembered gate.
+    // Only the gate id is stored, never a location.
+    const qs = new URLSearchParams(location.search);
+    if (!qs.get('entry') && storedEntry()) qs.set('entry', storedEntry());
+    const r = await fetch('/api/forecast' + (qs.toString() ? '?' + qs : '')); // ?merge.<key>=<pattern> experiments pass through
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+    document.getElementById('statusbar').style.background = cssColor(data.statusBar);
+    try { renderEntry(data); } catch (e) { console.error('entry picker failed:', e); }
+    // Say so when the data is stale rather than presenting an old forecast as
+    // current — the whole product is someone deciding whether to set an alarm.
+    const staleNote = data.stale ? ` · ⚠ upstream unreachable, data ${data.stale.minutes} min old` : '';
+    document.getElementById('meta').textContent =
+      `next 72 hours${data.home ? ` · from ${data.home}` : ''}${staleNote} · updated ${new Date(data.generatedAt).toLocaleTimeString('en-US', {timeZone: data.timezone, hour:'numeric', minute:'2-digit'})} ET`;
+    DATA = data;
+    main.innerHTML = data.events.map((ev, ei) => `
+      <section class="event">
+        <h2>${ev.kind === 'sunrise' ? '☀︎ Sunrise' : '☽ Sunset'} — ${esc(ev.day)}, ${esc(ev.time)}
+          <span class="when">in ${ev.hoursOut} h · best: ${esc(ev.best.name)} (${ev.best.grade})</span></h2>
+        ${ev.sites.map((s, si) => siteCard(s, ei, si, ev.kind)).join('')}
+      </section>`).join('');
+    document.getElementById('footer').innerHTML =
+      `Markers: ● good · ◒ middling · ⚠ poor or no-go (they repeat the block color, so meaning never rides on color alone). ` +
+      `Plus/minus grades: F &lt;0.7 · D 0.7 · D+ 1.3 · C- 1.7 · C 2.0 · C+ 2.3 · B- 2.7 · B 3.0 · B+ 3.3 · A- 3.7 · A 4.0 · A+ ≥4.3 (each letter starts its band). Deep green = A-band · light green = B-band · yellow = C-band · red = D/F or no-go. Clouds = three distance bands toward the sun, weighted by share of frame: near ≲3 mi (top of frame) · mid-ground ~2–9 mi · far ~9–24 mi; below that is Horizon. Horizon &amp; AOD sampled toward the sun (east for sunrise, west for sunset). ` +
+      `Models: ${data.config.models.join(', ')} (NAM not published via Open-Meteo; NBM stands in for the 8–48 h window). ` +
+      `Haze: CAMS AOD${data.config.openWeather ? ' + OpenWeather PM2.5' : ' only (OpenWeather PM2.5 inactive — key missing or not yet activated)'}. ` +
+      (data.access.ok
+        ? `Parkway status parsed from <a href="${esc(data.access.source)}" target="_blank" rel="noopener">nps.gov</a>.`
+        : `⚠ Parkway status unavailable — <a href="https://www.nps.gov/blri/planyourvisit/roadclosures.htm" target="_blank" rel="noopener">check nps.gov</a>.`);
+  } catch (err) {
+    main.innerHTML = `<div class="err">Could not load forecast: ${esc(err.message || err)}</div>`;
+  }
+}
+load();
+setInterval(load, 15 * 60 * 1000);
+
+// ---------------------------------------------------------------------------
+// Data panel: ground-truth collectors (METAR/AFD/GOES/webcam/volcano).
+// Read-only diagnostics — none of these feed a score yet. Left column picks
+// the source; a row of "options" picks which instance of it (station/sector/
+// cam/office — most have exactly one today); the main area shows the raw
+// rows collected plus a plain-language note on what it would mean for
+// scoring if it were wired in.
+// ---------------------------------------------------------------------------
+let GT_SOURCES = null, gtActiveSource = null, gtActiveOption = null;
+
+function fmtCell(v) {
+  if (v == null) return '';
+  if (typeof v === 'number') return Number.isInteger(v) ? String(v) : v.toFixed(4);
+  return String(v);
+}
+
+function rawTable(rows) {
+  if (!rows || !rows.length) return '<p class="sub">No data collected yet.</p>';
+  const cols = Object.keys(rows[0]).filter(c => c !== 'file_path' && c !== 'text');
+  const msCols = cols.filter(c => /_ms$/.test(c));
+  const head = cols.map(c => `<th>${esc(c)}</th>`).join('');
+  const body = rows.map(r => `<tr>${cols.map(c => {
+    const v = r[c];
+    const long = c === 'raw' || c === 'clouds_json' || c === 'qualifier';
+    const out = msCols.includes(c) && v != null ? new Date(v).toISOString().slice(0, 16).replace('T', ' ') : fmtCell(v);
+    return `<td${long ? ' class="mono"' : ''}>${esc(out)}</td>`;
+  }).join('')}</tr>`).join('');
+  return `<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+}
+
+async function renderDataSource(sourceId, optionId) {
+  gtActiveSource = sourceId; gtActiveOption = optionId;
+  document.querySelectorAll('.data-source').forEach(el => el.classList.toggle('active', el.dataset.source === sourceId));
+  const src = GT_SOURCES.find(s => s.id === sourceId);
+  const main = document.getElementById('datamain');
+  main.innerHTML = `
+    <div class="data-options">${src.options.map(o => `<button class="data-option${o.id === optionId ? ' active' : ''}" data-option="${esc(o.id)}">${esc(o.label)}</button>`).join('')}</div>
+    <div class="data-analysis">Loading…</div>
+    <div class="data-raw"></div>`;
+  main.querySelectorAll('.data-option').forEach(btn => btn.addEventListener('click', () => renderDataSource(sourceId, btn.dataset.option)));
+  try {
+    const r = await fetch(`/api/ground-truth/${encodeURIComponent(sourceId)}.json?option=${encodeURIComponent(optionId || '')}`);
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+    main.querySelector('.data-analysis').innerHTML = `<b>What this would mean for the score:</b> ${esc(data.analysis)}`;
+    main.querySelector('.data-raw').innerHTML = rawTable(data.raw);
+  } catch (err) {
+    main.querySelector('.data-analysis').textContent = `Could not load: ${err.message || err}`;
+  }
+}
+
+async function loadDataPanel() {
+  const nav = document.getElementById('datasources');
+  try {
+    const r = await fetch('/api/ground-truth.json');
+    const data = await r.json();
+    GT_SOURCES = data.sources;
+    nav.innerHTML = GT_SOURCES.map(s => `<button class="data-source" data-source="${esc(s.id)}">${esc(s.name)}</button>`).join('');
+    nav.querySelectorAll('.data-source').forEach(btn => btn.addEventListener('click', () => {
+      const src = GT_SOURCES.find(s => s.id === btn.dataset.source);
+      renderDataSource(btn.dataset.source, src.options[0]?.id);
+    }));
+    if (GT_SOURCES.length) renderDataSource(GT_SOURCES[0].id, GT_SOURCES[0].options[0]?.id);
+  } catch (err) {
+    nav.innerHTML = '';
+    document.getElementById('datamain').innerHTML = `<div class="err">Could not load data sources: ${esc(err.message || err)}</div>`;
+  }
+}
+
+const databtn = document.getElementById('databtn');
+databtn.addEventListener('click', () => {
+  const panel = document.getElementById('datapanel');
+  const open = !panel.classList.contains('open');
+  panel.classList.toggle('open', open);
+  databtn.setAttribute('aria-expanded', String(open));
+  if (open && !GT_SOURCES) loadDataPanel();
+});
+</script>
+</body>
+</html>

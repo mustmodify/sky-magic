@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "tron-channel": {
+      "command": "node",
+      "args": [
+        "/home/jw/projects/tron/agents/tron/mcp/tron-channel-mcp.js"
+      ],
+      "env": {
+        "TRON_AGENT_NAME": "focus-forecast"
+      }
+    },
+    "focus-forecast": {
+      "command": "node",
+      "args": [
+        "/home/jw/projects/mustmodify/focus-forecast/mcp-server.js"
+      ]
+    }
+  }
+}

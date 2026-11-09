@@ -1,0 +1,8 @@
+.env
+.openweather-key
+.clouds-api-hash
+nohup.out
+data/
+log/
+photos/
+tools/elevation-cache.json

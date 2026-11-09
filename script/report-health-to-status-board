@@ -1,0 +1,125 @@
+#!/usr/bin/env node
+// script/report-health-to-status-board — reports SkyMagic's health to JW's
+// local status board (wi-1852, wi-1853). JW's own words: "You'll have to work
+// it out with it or let it determine. But like if it can't get data, that's a
+// problem." So the dominant signal is data freshness, not uptime — the server
+// process can be "active" while quietly serving a stale forecast or a dead
+// history collector, which is exactly what happened on 2026-09-08 and
+// 2026-10-06 respectively. This checks for both.
+//
+// Cadence (wi-1853: report once a day, not hourly): cron can run this often —
+// it is a cheap local check — but it only POSTS once per 24h, or immediately
+// if the score has gotten worse since the last post. Mirrors
+// happy_thoughts/script/report-health-to-status-board, the existing pattern
+// on this box for the same status board.
+//
+// Usage: script/report-health-to-status-board [--force]
+
+const fs = require('fs');
+const path = require('path');
+const { execFileSync } = require('child_process');
+
+const ROOT = path.join(__dirname, '..');
+const STATUS_BOARD_URL = 'http://127.0.0.1:8794/api/report';
+const KEY_PATH = '/home/jw/projects/home/jarvis/.status-board/key';
+const DB = process.env.FF_HISTORY_DB || path.join(ROOT, 'data', 'history.db');
+const STATE_FILE = path.join(ROOT, 'log', '.status-board-state.json');
+const REPORT_INTERVAL_MS = 24 * 3600000;
+const FORCE = process.argv.includes('--force');
+
+function readState() {
+  try { return JSON.parse(fs.readFileSync(STATE_FILE, 'utf8')); }
+  catch { return { lastScore: null, lastReportAt: 0 }; }
+}
+function writeState(s) {
+  fs.mkdirSync(path.dirname(STATE_FILE), { recursive: true });
+  fs.writeFileSync(STATE_FILE, JSON.stringify(s));
+}
+
+// --- data freshness: is the live service currently serving fresh data? -----
+async function checkData() {
+  let payload;
+  try {
+    const res = await fetch('http://127.0.0.1:5813/api/forecast', { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    payload = await res.json();
+  } catch (err) {
+    // JW's own directive: not reaching the app at all IS the failure this
+    // exists to catch, so it scores it rather than staying silent the way
+    // happy-thoughts does on an unreachable app.
+    return { score: 0, signal: { name: 'reachable', value: 0 }, note: `SkyMagic unreachable: ${err.message}` };
+  }
+  if (payload.error) return { score: 0, signal: { name: 'reachable', value: 0 }, note: `SkyMagic returned an error: ${String(payload.error).slice(0, 100)}` };
+
+  const siteCount = payload.events?.[0]?.sites?.length ?? 0;
+  if (!payload.events?.length || siteCount < 3) {
+    return { score: 0.5, signal: { name: 'sites_computed', value: siteCount }, note: `only ${siteCount} site(s) produced events` };
+  }
+
+  let score = 4.0;
+  const notes = [];
+  if (payload.stale) {
+    const min = payload.stale.minutes ?? 0;
+    score -= min < 60 ? 1.0 : min < 360 ? 2.5 : 3.7;
+    notes.push(`serving stale cache, ${min} min old`);
+  }
+  if (payload.access && payload.access.ok === false) {
+    score -= 1.0;
+    notes.push(`NPS road-closures fetch failing (${payload.access.error ?? 'unknown'})`);
+  }
+  score = Math.max(0, +score.toFixed(2));
+  return {
+    score,
+    signal: { name: 'stale_minutes', value: payload.stale?.minutes ?? 0 },
+    note: notes.length ? notes.join('; ') : 'live fetch fresh, all sources OK',
+  };
+}
+
+// --- snapshot freshness: is the history collector still running? -----------
+function checkSnapshots() {
+  let out;
+  try {
+    out = execFileSync('/usr/bin/sqlite3', ['-json', DB, 'SELECT taken_ms FROM snapshots ORDER BY taken_ms DESC LIMIT 1;'], { encoding: 'utf8' });
+  } catch (err) {
+    return { score: 0, signal: { name: 'snapshot_age_hours', value: null }, note: `could not read history.db: ${err.message.slice(0, 100)}` };
+  }
+  const rows = out.trim() ? JSON.parse(out) : [];
+  if (!rows.length) return { score: 0, signal: { name: 'snapshot_age_hours', value: null }, note: 'no snapshots recorded yet' };
+
+  const ageHours = +((Date.now() - rows[0].taken_ms) / 3600000).toFixed(1);
+  // Expected cadence since 2026-10-16 is 2h for events inside 12h, else 4h, so
+  // anything over ~5h has already missed a cycle. On 2026-10-06 a ~16h DNS
+  // outage produced exactly the kind of gap the >16h floor exists to catch.
+  const score = ageHours <= 5 ? 4.0 : ageHours <= 9 ? 2.5 : ageHours <= 16 ? 1.0 : 0;
+  return { score, signal: { name: 'snapshot_age_hours', value: ageHours }, note: `latest snapshot ${ageHours}h old` };
+}
+
+async function post(id, result) {
+  const key = fs.readFileSync(KEY_PATH, 'utf8').trim();
+  const res = await fetch(STATUS_BOARD_URL, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, score: result.score, signal: result.signal, note: result.note }),
+  });
+  if (!res.ok) throw new Error(`status board POST ${id} -> HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+}
+
+(async () => {
+  const data = await checkData();
+  const snapshots = checkSnapshots();
+  const overall = +Math.min(data.score, snapshots.score).toFixed(2); // the worse of the two drives whether JW gets alerted
+
+  const state = readState();
+  const now = Date.now();
+  const due = now - state.lastReportAt >= REPORT_INTERVAL_MS;
+  const worse = state.lastScore == null || overall < state.lastScore;
+  const should = FORCE || due || worse;
+
+  console.log(`data=${data.score} (${data.note}) | snapshots=${snapshots.score} (${snapshots.note}) | overall=${overall}`);
+  if (!should) { console.log(`skipping post: not due and not worse (last ${state.lastScore} at ${new Date(state.lastReportAt).toISOString()})`); return; }
+
+  await post('skymagic.data', data);
+  await post('skymagic.snapshots', snapshots);
+  writeState({ lastScore: overall, lastReportAt: now });
+  console.log(`reported (${FORCE ? 'forced' : due ? 'daily report due' : 'score got worse'}): overall=${overall}`);
+})().catch(e => { console.error(e); process.exit(1); });

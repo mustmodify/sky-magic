@@ -1,0 +1,61 @@
+# Candidate SkyMagic sites — coordinates from OpenStreetMap (Overpass), 2026-09-07.
+# Verified where a published elevation exists. NOT yet checked for sunrise/sunset
+# suitability: facing needs JW. Run tools/horizon.js --lat --lon to rule one out.
+name	lat	lon	ele_m
+Bad Fork Valley Overlook (MP 399.7)	35.4508096	-82.6516174	1021.08
+Beartrail Ridge Overlook (MP 430.4)	35.3540953	-82.982916	1789.786
+Beartrap Gap Overlook (MP 428.5)	35.335268	-82.9659544	1306.068
+Bearwallow Mountain	35.4609509	-82.356783	1281
+Beaver Dam Gap Overlook (MP 401.7)	35.4536062	-82.6799532	1088.136
+Big Ridge Overlook (MP 403.6)	35.4504331	-82.7089203	1164.336
+Black Balsam Knob	35.3278465	-82.8744813	1890
+Browning Knob Overlook (MP 451.2)	35.4578189	-83.1407601	1743.151
+Bull Creek Valley Overlook (MP 373.8)	35.6562715	-82.4563026	1061.618
+Bunches Bald Overlook (MP 459.5)	35.5160537	-83.1939617	1501.14
+Caney Fork Overlook (MP 428.0)	35.3274424	-82.9651438	1722.12
+Cold Mountain Overlook (MP 411.9)	35.3746023	-82.7901419	
+Cowee mountains Overlook (MP 430.7)	35.3555812	-82.9879007	1813.56
+Craggy Dome Overlook (MP 364.1)	35.7043179	-82.3735885	1719.072
+Craggy Dome Scenic Overlook (MP 364.5)	35.7004803	-82.3794808	1675.486
+Craggy Pinnacle	35.7034481	-82.3779016	1780
+Craggy Pinnacle Summit	35.7032535	-82.3774048	
+Cranberry Ridge Overlook (MP 452.1)	35.465747	-83.1437387	1668.78
+Fed Cove Overlook (MP 455.1)	35.4899675	-83.1526688	1386.84
+Fetterbush Overlook (MP 421.7)	35.3041975	-82.8884204	1674.571
+Fork Ridge Overlook (MP 449.0)	35.4594425	-83.1172299	1609.344
+Glassmine Falls Overlook (MP 361.2)	35.7349103	-82.3439764	1584.96
+Grassy Ridge Mine Overlook (MP 436.8)	35.4099854	-83.0451212	1600.2
+Green Knob Overlook (MP 350.4)	35.7177595	-82.2225391	1451.153
+Jonathan Creek Overlook (MP 456.2)	35.5037303	-83.1554696	1359.408
+Lane Pinnacle Overlook (MP 372.1)	35.6679625	-82.4422678	1185.7
+Laurel Knob Overlook (MP 349.2)	35.7252376	-82.2075477	1402.69
+Licklog Gap Overlook (MP 435.7)	35.3980169	-83.0428741	1565.148
+Lickstone Overlook (MP 458.9)	35.5096119	-83.1887689	1569.72
+Log Hollow Overlook (MP 416.6)	35.3297561	-82.8209263	1367.942
+Lone Bald Overlook (MP 432.7)	35.3763762	-83.0056228	1717.548
+Max Patch Mountain	35.7970454	-82.9568108	1407
+Mills River Valley Overlook (MP 404.5)	35.4426677	-82.719732	1245.108
+Mount Pisgah	35.4259427	-82.7567956	1744
+Plott Balsam Overlook (MP 457.9)	35.5082888	-83.1744298	1530.096
+Pounding Mill Overlook (MP 413.2)	35.3577077	-82.7934163	1432.56
+Richland Balsam	35.3673243	-82.9904136	1951
+Richland Balsam Overlook - Highest Point on the Parkway (MP 431.4)	35.3629809	-82.9921858	1843.126
+Ridge Junction Overlook (MP 355.3)	35.71726	-82.278608	1572.768
+Rough Butt Bald Overlook (MP 425.4)	35.3040646	-82.9425289	1615.44
+Roy Taylor Forest Overlook (MP 433.3)	35.3788984	-83.015139	1700.784
+Scott Creek Overlook (MP 448.5)	35.4504882	-83.116691	1539.24
+Soco Gap Overlook (MP 455.5)	35.4943892	-83.1555087	1392.936
+Tanbark Ridge Overlook (MP 376.7)	35.6530182	-82.4850998	967.74
+The Cradle of Forestry Overlook (MP 411.0)	35.3809955	-82.7811938	1435.608
+Thunderstruck Overlook (MP 454.4)	35.4847017	-83.1518785	1456.944
+View Herrin Knob Overlook (MP 424.4)	35.300172	-82.9293479	1679.448
+View Mount Mitchell Overlook (MP 349.9)	35.7231564	-82.218895	1470.66
+Wagon Road Gap Overlook (MP 411.8)	35.370221	-82.7915768	1382.268
+Walker Knob Overlook (MP 359.8)	35.7484272	-82.3337138	1620.622
+Waterrock Knob	35.4641206	-83.1376565	1904
+Wesner Bald Overlook (MP 448.1)	35.4463589	-83.1155822	1497.178
+Wolf Mountain Overlook (MP 424.8)	35.3018817	-82.9344896	1676.4
+Woodfin Cascades Overlook (MP 446.7)	35.4524024	-83.1031363	1382.268
+Woodfin Valley Overlook (MP 446.0)	35.4525152	-83.0929626	1255.776
+Woolyback Overlook (MP 452.3)	35.4678353	-83.1416401	1653.54
+Yellow Face Overlook (MP 450.2)	35.4587266	-83.1309888	1709.928

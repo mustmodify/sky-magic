@@ -1,0 +1,286 @@
+[
+  {
+    "site": "Mount Mitchell (Summit Lot)",
+    "id": "mitchell",
+    "lat": 35.7649,
+    "lon": -82.2653,
+    "elevationM": 2014,
+    "directions": {
+      "sunrise": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 119.4,
+            "horizonAngleDeg": -2.41,
+            "blockerMiles": 26,
+            "blockerElevM": 373,
+            "verdict": "wide open"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 90,
+            "horizonAngleDeg": -2.38,
+            "blockerMiles": 26,
+            "blockerElevM": 393,
+            "verdict": "wide open"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 60.6,
+            "horizonAngleDeg": -1.69,
+            "blockerMiles": 26,
+            "blockerElevM": 899,
+            "verdict": "wide open"
+          }
+        },
+        "bestDeg": -2.41,
+        "worstDeg": -1.69,
+        "verdict": "wide open"
+      },
+      "sunset": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 240.6,
+            "horizonAngleDeg": -1.79,
+            "blockerMiles": 26,
+            "blockerElevM": 827,
+            "verdict": "wide open"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 270,
+            "horizonAngleDeg": -2.03,
+            "blockerMiles": 26,
+            "blockerElevM": 650,
+            "verdict": "wide open"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 299.4,
+            "horizonAngleDeg": -1.67,
+            "blockerMiles": 26,
+            "blockerElevM": 911,
+            "verdict": "wide open"
+          }
+        },
+        "bestDeg": -2.03,
+        "worstDeg": -1.67,
+        "verdict": "wide open"
+      }
+    }
+  },
+  {
+    "site": "Craggy Pinnacle",
+    "id": "craggy",
+    "lat": 35.705,
+    "lon": -82.373,
+    "elevationM": 1681,
+    "directions": {
+      "sunrise": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 119.3,
+            "horizonAngleDeg": -1.97,
+            "blockerMiles": 26,
+            "blockerElevM": 356,
+            "verdict": "wide open"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 90,
+            "horizonAngleDeg": 0.08,
+            "blockerMiles": 5.5,
+            "blockerElevM": 1698,
+            "verdict": "wide open"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 60.7,
+            "horizonAngleDeg": 0.95,
+            "blockerMiles": 4,
+            "blockerElevM": 1790,
+            "verdict": "wide open"
+          }
+        },
+        "bestDeg": -1.97,
+        "worstDeg": 0.95,
+        "verdict": "wide open"
+      },
+      "sunset": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 240.7,
+            "horizonAngleDeg": -0.76,
+            "blockerMiles": 26,
+            "blockerElevM": 1242,
+            "verdict": "wide open"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 270,
+            "horizonAngleDeg": -0.69,
+            "blockerMiles": 26,
+            "blockerElevM": 1294,
+            "verdict": "wide open"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 299.3,
+            "horizonAngleDeg": -1.83,
+            "blockerMiles": 20,
+            "blockerElevM": 723,
+            "verdict": "wide open"
+          }
+        },
+        "bestDeg": -1.83,
+        "worstDeg": -0.69,
+        "verdict": "wide open"
+      }
+    }
+  },
+  {
+    "site": "Green Knob Overlook",
+    "id": "greenknob",
+    "lat": 35.749,
+    "lon": -82.2439,
+    "elevationM": 1302,
+    "directions": {
+      "sunrise": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 119.3,
+            "horizonAngleDeg": -0.37,
+            "blockerMiles": 2.8,
+            "blockerElevM": 1274,
+            "verdict": "wide open"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 90,
+            "horizonAngleDeg": -1.47,
+            "blockerMiles": 26,
+            "blockerElevM": 346,
+            "verdict": "wide open"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 60.7,
+            "horizonAngleDeg": -0.85,
+            "blockerMiles": 26,
+            "blockerElevM": 798,
+            "verdict": "wide open"
+          }
+        },
+        "bestDeg": -1.47,
+        "worstDeg": -0.37,
+        "verdict": "wide open"
+      },
+      "sunset": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 240.7,
+            "horizonAngleDeg": 7.43,
+            "blockerMiles": 1,
+            "blockerElevM": 1512,
+            "verdict": "BLOCKED"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 270,
+            "horizonAngleDeg": 11.75,
+            "blockerMiles": 1.4,
+            "blockerElevM": 1771,
+            "verdict": "BLOCKED"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 299.3,
+            "horizonAngleDeg": 18.99,
+            "blockerMiles": 1,
+            "blockerElevM": 1856,
+            "verdict": "BLOCKED"
+          }
+        },
+        "bestDeg": 7.43,
+        "worstDeg": 18.99,
+        "verdict": "BLOCKED"
+      }
+    }
+  },
+  {
+    "site": "Home (calibration)",
+    "id": "home",
+    "lat": 35.6919494,
+    "lon": -82.5157887,
+    "elevationM": 649,
+    "directions": {
+      "sunrise": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 119.3,
+            "horizonAngleDeg": 7.58,
+            "blockerMiles": 1.4,
+            "blockerElevM": 949,
+            "verdict": "BLOCKED"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 90,
+            "horizonAngleDeg": 3.98,
+            "blockerMiles": 4,
+            "blockerElevM": 1100,
+            "verdict": "partly blocked"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 60.7,
+            "horizonAngleDeg": 3.96,
+            "blockerMiles": 4,
+            "blockerElevM": 1097,
+            "verdict": "partly blocked"
+          }
+        },
+        "bestDeg": 3.96,
+        "worstDeg": 7.58,
+        "verdict": "BLOCKED"
+      },
+      "sunset": {
+        "seasons": {
+          "winter": {
+            "label": "Dec solstice",
+            "bearingDeg": 240.7,
+            "horizonAngleDeg": 1.08,
+            "blockerMiles": 1.4,
+            "blockerElevM": 692,
+            "verdict": "slightly raised"
+          },
+          "equinox": {
+            "label": "Equinox",
+            "bearingDeg": 270,
+            "horizonAngleDeg": 1.16,
+            "blockerMiles": 20,
+            "blockerElevM": 1370,
+            "verdict": "slightly raised"
+          },
+          "summer": {
+            "label": "Jun solstice",
+            "bearingDeg": 299.3,
+            "horizonAngleDeg": 2.51,
+            "blockerMiles": 2,
+            "blockerElevM": 791,
+            "verdict": "slightly raised"
+          }
+        },
+        "bestDeg": 1.08,
+        "worstDeg": 2.51,
+        "verdict": "slightly raised"
+      }
+    }
+  }
+]
