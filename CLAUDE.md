@@ -530,3 +530,67 @@ disturbed — 2024-05-07 unaffected (site-view was in its moderate-penalty
 branch, not the changed one, overall unchanged at C+/2.51) and 2026-09-16
 unaffected (A+/4.3, real texture present, band leaves alone already carried
 it there).
+
+**A new leaf, 2026-11-09: "Light show" (display-only, weight 0).** JW spent a
+session going photo by photo through 2026-11-09's calibration set, asking why
+some skies with a lot of cloud read flat and others with very little cloud
+read spectacular. Two real, physically-grounded findings came out of it, plus
+two honest ceilings on what can be scored:
+
+*Timing is an angle, not a clock reading.* The first pass used "minutes from
+a labeled sunset time" and got photo #47 flatly wrong (claimed it was shot an
+hour after sunset; it was actually five minutes before). The labeled sunset
+time itself turned out to be mislabeled — Open-Meteo's archive API reported
+the wrong UTC offset for that historical date (standard time instead of the
+daylight time actually in effect), which silently poisoned the comparison.
+Switched to computing the sun's real elevation angle directly (NOAA solar
+position formula, `solarElevationDeg` in `server.js`) rather than trusting
+any API's "sunset" label, and the picture got much clearer.
+
+*Two separate windows, not one.* #47 (100% high cloud, sun +0.4°, still above
+the horizon) read flat grey. #73 (nearly identical cloud data, sun -2.2°)
+read "the entire sky lit up." #72, same evening as #70/#71 but 34 minutes
+later (sun -7.8°), had gone fully dark. That's the classic alpenglow pattern:
+a solid or near-solid high deck needs the sun a few degrees below the horizon
+(roughly -1° to -6°) because only the tallest clouds still catch grazing
+light once the ground itself is in shadow — #73, #81, #82, #83, #51, and #002
+all fell in this window and all read as real shows; #47 and #72, outside it,
+did not. Broken low/mid cloud doesn't need to wait — it's already close to
+the ground, so it catches that light right around literal sunrise/sunset,
+roughly +2° to -3° (#70, #71, #016, #066, #067 all fit here).
+
+*Confirmed at the pixel level, not just by eye.* JW's claim that #70's red
+was "VERY red" while #73's was "a bit of red" despite #73 covering far more
+of the frame (30% warm pixels vs 14%) held up under an actual hue histogram
+(ImageMagick `txt:` pixel dump → HSV, bucketed by hue): #70's warm pixels
+cluster hard at true red (hue 0-5°, the single largest bucket), #73's cluster
+in orange and trail into yellow, never reaching red. #81 (visually "a
+different density" of high cloud than #73's "thin veil") confirmed the same
+way — 69% of the frame warm, but packed into a narrow saturated orange band
+rather than #73's broader orange-to-yellow gradient. This maps to real
+optical density (thin cirrus transmits light diffusely = pale wash over a
+wide area; denser cloud scatters/reddens more selectively = saturated color
+over less area) but there's no weather field for "how optically thick is
+this cloud," so it isn't scored — only the window-fit and coverage amount
+are.
+
+*The known gap, confirmed a second and third time.* #62 is a mostly-opaque
+high deck (the leaf's own translucency check correctly reads it as opaque,
+not the "thin veil" classification #73/#81 got) with one brilliant gap right
+at the horizon where the sun broke through — JW's own caption from months
+earlier: "should have been an A+ but the left-side clouds are so dark." The
+Light-show leaf scores this well anyway (3.99) because it only sees "lots of
+high cloud, right elevation," not "is there a hole exactly where the sun is."
+Same root limitation as the 2026-10-16 azimuth-gap finding elsewhere in this
+file, now confirmed on a second (and via #47-type muting, a third) mechanism.
+Areal cloud-cover fields fundamentally can't answer "where exactly is the
+gap," and there may be no available data source that can.
+
+**What got implemented vs. what didn't.** `leafLightShow` (`server.js`)
+scores the two-window, coverage-scaled model above — `weight: 0`, computed
+and shown but not affecting the overall score, same treatment Access and
+Vantage already get. It does NOT model color saturation/density (no data for
+it) or gap-at-azimuth (same limitation as Horizon's existing gap). Validated
+against the 14 photos JW walked through above; not yet run against the full
+119-photo set or given any real weight. That's the natural next check before
+this becomes anything more than a number on the audit page.

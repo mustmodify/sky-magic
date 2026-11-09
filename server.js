@@ -322,6 +322,42 @@ function hourIndex(loc, ms) {
 }
 const at = (loc, key, ms) => { const i = hourIndex(loc, ms); return i < 0 ? null : loc.hourly[key]?.[i] ?? null; };
 
+// Standard NOAA-style solar position — real elevation angle, not a proxy like
+// "minutes from a labeled sunset time" (see the Light-show leaf below for why
+// that distinction mattered). Used only for Light-show; nothing else in this
+// file needs the sun's actual angle.
+function solarElevationDeg(utcMs, lat, lon) {
+  const rad = Math.PI / 180;
+  const jd = utcMs / 86400000 + 2440587.5;
+  const T = (jd - 2451545.0) / 36525;
+  const L0 = (280.46646 + T * (36000.76983 + T * 0.0003032)) % 360;
+  const M = 357.52911 + T * (35999.05029 - 0.0001537 * T);
+  const Mrad = M * rad;
+  const C = Math.sin(Mrad) * (1.914602 - T * (0.004817 + 0.000014 * T))
+          + Math.sin(2 * Mrad) * (0.019993 - 0.000101 * T)
+          + Math.sin(3 * Mrad) * 0.000289;
+  const trueLong = L0 + C;
+  const omega = 125.04 - 1934.136 * T;
+  const apparentLong = trueLong - 0.00569 - 0.00478 * Math.sin(omega * rad);
+  const epsilon0 = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60;
+  const epsilon = epsilon0 + 0.00256 * Math.cos(omega * rad);
+  const decl = Math.asin(Math.sin(epsilon * rad) * Math.sin(apparentLong * rad)) / rad;
+  const eqTimeY = Math.tan((epsilon / 2) * rad) ** 2;
+  const eqTime = 4 * (eqTimeY * Math.sin(2 * L0 * rad)
+    - 2 * 0.016708634 * Math.sin(Mrad)
+    + 4 * 0.016708634 * eqTimeY * Math.sin(Mrad) * Math.cos(2 * L0 * rad)
+    - 0.5 * eqTimeY * eqTimeY * Math.sin(4 * L0 * rad)
+    - 1.25 * 0.016708634 * 0.016708634 * Math.sin(2 * Mrad)) / rad;
+  const date = new Date(utcMs);
+  const utcMinutes = date.getUTCHours() * 60 + date.getUTCMinutes() + date.getUTCSeconds() / 60;
+  const solarTime = (utcMinutes + eqTime + 4 * lon) % 1440;
+  const hourAngle = solarTime / 4 - 180;
+  const haRad = hourAngle * rad;
+  const latRad = lat * rad, declRad = decl * rad;
+  const elevRad = Math.asin(Math.sin(latRad) * Math.sin(declRad) + Math.cos(latRad) * Math.cos(declRad) * Math.cos(haRad));
+  return elevRad / rad;
+}
+
 const fmtTime = ms => new Intl.DateTimeFormat('en-US', { timeZone: CONFIG.timezone, hour: 'numeric', minute: '2-digit' }).format(ms);
 const fmtDay = ms => new Intl.DateTimeFormat('en-US', { timeZone: CONFIG.timezone, weekday: 'short', month: 'short', day: 'numeric' }).format(ms);
 
@@ -564,6 +600,61 @@ const leafSiteView = ctx => {
   }
   if (score == null) return { score: null, value: `site low ${Math.round(l)}% · total ${Math.round(t)}% (unblocked)` };
   return { score, value: `site low ${Math.round(l)}% · total ${Math.round(t)}%` };
+};
+
+// Light show — display-only (weight 0), 2026-11-09, built from a same-day
+// photo-by-photo investigation with JW (see CLAUDE.md for the full writeup;
+// this comment is the short version).
+//
+// JW's core observation: whether a sunset/sunrise is dramatic isn't just
+// "is there cloud" — it's whether the sun is at the right angle to light
+// it. A 100%-high-cloud sky can be a flat grey sheet (photo #47, sun still
+// +0.4° above the horizon) or "the entire sky lit up" (#73, sun -2.2°,
+// otherwise near-identical cloud data) purely because of timing. And the
+// *kind* of window differs by cloud altitude: a solid/near-solid high deck
+// wants the classic alpenglow window, roughly 1-6° below the horizon,
+// because only the tallest clouds still catch grazing light once the
+// ground itself is in shadow (#73, #81, #82, #83, #51, #002 all landed in
+// this window; #47 at +0.4° and #72 at -7.8°, both outside it, read flat).
+// Broken low/mid cloud doesn't need to wait that long — it's already close
+// to the ground, so it lights up right around literal sunset/sunrise,
+// roughly +2° to -3° (#70, #71, #016, #066, #067).
+//
+// Deliberately NOT modeled: color saturation/intensity. A same-day pixel-
+// level check (hue histograms of #70 vs #73 vs #81) showed dense low/mid
+// cloud reads as much more saturated red for a given amount of coverage
+// than a thin high veil does — real, but it's a property of the cloud's
+// optical density that this weather data has no field for, so it can't be
+// scored, only noted. Also not modeled: a gap at the exact azimuth the sun
+// sits at (#62 — a mostly-opaque deck with one brilliant gap at the
+// horizon) — same already-documented limitation as the 2026-10-16 azimuth
+// finding elsewhere in this file, not something cloud-cover-by-altitude
+// can see. So this leaf answers "is this event capable of a light show at
+// all" (which window, if either, and how much of that cloud type is
+// present) — not "how dramatic," which needs information this app doesn't
+// have.
+//
+// Weight 0: validated against 14 photos JW picked out, not yet checked
+// against the full 119-photo set or given any real influence on the score.
+function triHump(x, rise, peak, fall) {
+  if (x >= rise || x <= fall) return 0;
+  if (x > peak) return (rise - x) / (rise - peak);
+  return (x - fall) / (peak - fall);
+}
+const leafLightShow = ctx => {
+  const elev = solarElevationDeg(ctx.ms, ctx.site.lat, ctx.site.lon);
+  const highPct = bandVal(ctx, 'near', 'cloud_cover_high');
+  const midPct = bandVal(ctx, 'near', 'cloud_cover_mid');
+  const lowPct = bandVal(ctx, 'near', 'cloud_cover_low');
+  if (highPct == null && midPct == null && lowPct == null) return { score: null };
+  const highWindow = triHump(elev, 0.5, -3, -7);
+  const lowMidWindow = triHump(elev, 2, -0.8, -3);
+  const highComp = highWindow * ((highPct ?? 0) / 100);
+  const lowMidComp = lowMidWindow * (Math.min(100, (midPct ?? 0) + (lowPct ?? 0)) / 100);
+  const raw = Math.max(highComp, lowMidComp);
+  const which = highComp >= lowMidComp ? 'high cloud' : 'low/mid cloud';
+  const score = +(raw * 4).toFixed(2);
+  return { score, value: `sun ${elev.toFixed(1)}° · ${which} window: ${(Math.max(highComp, lowMidComp) > 0 ? 'in range' : 'outside range')}` };
 };
 
 // Cross-model consensus: HRRR weighted up inside its ~18h horizon, NBM carries
@@ -838,6 +929,7 @@ const METRIC_TREE = {
     ] },
     { key: 'vantage', name: 'Vantage', weight: 0,
       compute: ctx => ({ score: ctx.site.vantage, value: ctx.site.vantageNote }) },
+    { key: 'lightshow', name: 'Light show', weight: 0, compute: leafLightShow },
   ],
 };
 
