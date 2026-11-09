@@ -354,6 +354,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.75,
+        "grade": "C-",
+        "value": "sun -3.8° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -711,6 +720,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.48,
+        "grade": "F",
+        "value": "sun 1.4° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -1071,6 +1089,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 4.2° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -1427,6 +1454,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 2.2,
+        "grade": "C",
+        "value": "sun -1.8° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -1787,6 +1823,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 2.23,
+        "grade": "C",
+        "value": "sun -1.8° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -2144,6 +2189,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -7.7° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -2507,6 +2561,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.07,
+        "grade": "F",
+        "value": "sun -0.5° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -2866,6 +2929,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.62,
+        "grade": "F",
+        "value": "sun -0.4° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -3229,6 +3301,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.78,
+        "grade": "D",
+        "value": "sun -1.7° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -3588,6 +3669,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 0.1° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -3951,6 +4041,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.42,
+        "grade": "F",
+        "value": "sun 0.1° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -4309,6 +4408,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.94,
+        "grade": "D",
+        "value": "sun -0.3° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -4672,6 +4780,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.29,
+        "grade": "D",
+        "value": "sun 0.6° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -5030,6 +5147,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.48,
+        "grade": "F",
+        "value": "sun -1.4° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -5392,6 +5518,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.33,
+        "grade": "F",
+        "value": "sun -1.9° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -5750,6 +5885,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.32,
+        "grade": "F",
+        "value": "sun -2.0° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -6112,6 +6256,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.31,
+        "grade": "F",
+        "value": "sun -2.0° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -6472,6 +6625,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.1,
+        "grade": "F",
+        "value": "sun -2.7° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -6830,6 +6992,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.02,
+        "grade": "F",
+        "value": "sun 1.4° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -7193,6 +7364,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -8.1° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -7552,6 +7732,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.28,
+        "grade": "F",
+        "value": "sun -3.5° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -7915,6 +8104,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.01,
+        "grade": "F",
+        "value": "sun -0.8° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -8274,6 +8472,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -3.3° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -8637,6 +8844,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.53,
+        "grade": "F",
+        "value": "sun 1.5° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -8998,6 +9214,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.29,
+        "grade": "F",
+        "value": "sun -1.8° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -9356,6 +9581,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.11,
+        "grade": "F",
+        "value": "sun 0.4° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -9719,6 +9953,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.19,
+        "grade": "F",
+        "value": "sun -5.4° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -10078,6 +10321,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.86,
+        "grade": "D",
+        "value": "sun -0.2° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -10441,6 +10693,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 2.1,
+        "grade": "C",
+        "value": "sun -4.3° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -10800,6 +11061,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.05,
+        "grade": "D",
+        "value": "sun -1.3° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -11163,6 +11433,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 3.6° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -11522,6 +11801,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 3.96,
+        "grade": "A-",
+        "value": "sun -3.0° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -11885,6 +12173,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 3.99,
+        "grade": "A-",
+        "value": "sun -3.0° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -12244,6 +12541,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -7.9° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -12607,6 +12913,15 @@
         "value": "open overlook, one direction",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 0.8° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -12965,6 +13280,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.62,
+        "grade": "D+",
+        "value": "sun -0.9° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -13327,6 +13651,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 2.57,
+        "grade": "C+",
+        "value": "sun -1.8° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -13687,6 +14020,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 3.99,
+        "grade": "A-",
+        "value": "sun -3.0° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -14045,6 +14387,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -0.2° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -14408,6 +14759,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.4,
+        "grade": "D+",
+        "value": "sun -5.4° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -14767,6 +15127,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.31,
+        "grade": "F",
+        "value": "sun 0.9° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -15130,6 +15499,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.4,
+        "grade": "F",
+        "value": "sun 0.6° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -15490,6 +15868,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 16.0° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -15848,6 +16235,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 16.1° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -16211,6 +16607,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.68,
+        "grade": "F",
+        "value": "sun -0.9° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -16570,6 +16975,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.64,
+        "grade": "F",
+        "value": "sun -1.0° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -16933,6 +17347,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -7.8° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -17294,6 +17717,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 3.08,
+        "grade": "B",
+        "value": "sun -2.2° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -17652,6 +18084,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -3.0° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -18015,6 +18456,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.28,
+        "grade": "F",
+        "value": "sun -6.1° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -18374,6 +18824,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.21,
+        "grade": "D",
+        "value": "sun -4.6° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -18737,6 +19196,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.63,
+        "grade": "D+",
+        "value": "sun -5.4° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -19096,6 +19564,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.49,
+        "grade": "F",
+        "value": "sun 0.1° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -19459,6 +19936,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.07,
+        "grade": "D",
+        "value": "sun -0.5° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -19818,6 +20304,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.69,
+        "grade": "D+",
+        "value": "sun -1.1° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -20181,6 +20676,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.93,
+        "grade": "C-",
+        "value": "sun -1.2° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -20539,6 +21043,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.38,
+        "grade": "D+",
+        "value": "sun -0.8° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -20902,6 +21415,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 2.2° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -21263,6 +21785,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.05,
+        "grade": "F",
+        "value": "sun 1.8° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -21621,6 +22152,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 2.6,
+        "grade": "C+",
+        "value": "sun -1.8° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -21984,6 +22524,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -3.3° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -22343,6 +22892,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.05,
+        "grade": "D",
+        "value": "sun -5.5° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -22705,6 +23263,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.43,
+        "grade": "F",
+        "value": "sun -1.5° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -23063,6 +23630,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -3.7° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -23425,6 +24001,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -4.1° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -23783,6 +24368,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -4.2° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -24145,6 +24739,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -4.2° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -24505,6 +25108,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -5.9° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -24863,6 +25475,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -6.0° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -25226,6 +25847,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.58,
+        "grade": "F",
+        "value": "sun -3.2° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -25584,6 +26214,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.05,
+        "grade": "F",
+        "value": "sun 1.2° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -25946,6 +26585,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 5.0° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -26304,6 +26952,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 2.13,
+        "grade": "C",
+        "value": "sun -3.9° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -26666,6 +27323,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -5.8° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -27026,6 +27692,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -5.6° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -27384,6 +28059,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -1.6° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -27747,6 +28431,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.86,
+        "grade": "C-",
+        "value": "sun -1.2° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -28106,6 +28799,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 18.8° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -28469,6 +29171,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 11.1° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -28828,6 +29539,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 5.6° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -29191,6 +29911,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 5.6° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -29550,6 +30279,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.71,
+        "grade": "C-",
+        "value": "sun -1.7° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -29913,6 +30651,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 2.29,
+        "grade": "C",
+        "value": "sun -1.6° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -30272,6 +31019,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.63,
+        "grade": "F",
+        "value": "sun -3.0° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -30635,6 +31391,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.37,
+        "grade": "F",
+        "value": "sun -4.7° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -30994,6 +31759,15 @@
         "score": 4,
         "grade": "A",
         "value": "summit platform, open panorama",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.66,
+        "grade": "D+",
+        "value": "sun -2.3° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -31357,6 +32131,15 @@
         "value": "summit platform, open panorama",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.53,
+        "grade": "D+",
+        "value": "sun -2.1° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -31716,6 +32499,15 @@
         "score": 4,
         "grade": "A",
         "value": "summit platform, open panorama",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 1.2° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -32079,6 +32871,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.41,
+        "grade": "D+",
+        "value": "sun -0.8° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -32438,6 +33239,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 25.6° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -32800,6 +33610,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.38,
+        "grade": "F",
+        "value": "sun -3.2° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -33158,6 +33977,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.38,
+        "grade": "F",
+        "value": "sun -3.2° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -33520,6 +34348,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.37,
+        "grade": "F",
+        "value": "sun -3.3° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -33880,6 +34717,15 @@
         "grade": "?",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.18,
+        "grade": "F",
+        "value": "sun -5.2° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -34238,6 +35084,15 @@
         "name": "Vantage",
         "score": null,
         "grade": "?",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.17,
+        "grade": "F",
+        "value": "sun -5.3° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -34601,6 +35456,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.38,
+        "grade": "F",
+        "value": "sun 0.0° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -34960,6 +35824,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.39,
+        "grade": "F",
+        "value": "sun 0.0° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -35323,6 +36196,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.52,
+        "grade": "D+",
+        "value": "sun -4.8° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -35682,6 +36564,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.26,
+        "grade": "F",
+        "value": "sun -0.0° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -36045,6 +36936,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.04,
+        "grade": "F",
+        "value": "sun -3.3° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -36404,6 +37304,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.66,
+        "grade": "D+",
+        "value": "sun -3.8° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -36767,6 +37676,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 1.64,
+        "grade": "D+",
+        "value": "sun -3.8° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -37126,6 +38044,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 6.6° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -37489,6 +38416,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.2,
+        "grade": "F",
+        "value": "sun 0.8° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -37848,6 +38784,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.2,
+        "grade": "F",
+        "value": "sun 0.8° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -38211,6 +39156,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.25,
+        "grade": "F",
+        "value": "sun 0.5° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -38570,6 +39524,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.93,
+        "grade": "D",
+        "value": "sun -0.1° · low/mid cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -38933,6 +39896,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.94,
+        "grade": "D",
+        "value": "sun -0.1° · low/mid cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -39292,6 +40264,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -6.1° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -39655,6 +40636,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -6.1° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -40014,6 +41004,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -7.2° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -40377,6 +41376,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -7.2° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -40736,6 +41744,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -3.5° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
@@ -41099,6 +42116,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun -6.7° · high cloud window: outside range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -41458,6 +42484,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.02,
+        "grade": "F",
+        "value": "sun -1.0° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -41821,6 +42856,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.02,
+        "grade": "F",
+        "value": "sun -1.0° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -42180,6 +43224,15 @@
         "score": null,
         "grade": "?",
         "value": "calibration proxy — sky only",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.04,
+        "grade": "F",
+        "value": "sun -3.3° · high cloud window: in range",
         "weight": 0,
         "children": []
       }
@@ -42543,6 +43596,15 @@
         "value": "calibration proxy — sky only",
         "weight": 0,
         "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0.04,
+        "grade": "F",
+        "value": "sun -3.3° · high cloud window: in range",
+        "weight": 0,
+        "children": []
       }
     ]
   },
@@ -42902,6 +43964,15 @@
         "score": 4,
         "grade": "A",
         "value": "360° bald summit",
+        "weight": 0,
+        "children": []
+      },
+      {
+        "key": "lightshow",
+        "name": "Light show",
+        "score": 0,
+        "grade": "F",
+        "value": "sun 7.2° · high cloud window: outside range",
         "weight": 0,
         "children": []
       }
